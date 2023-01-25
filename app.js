@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
   });
 
   const port = process.env.PORT || 3000;
-// database connection
+
 db.connect((err) => {
   err
     ? console.log("db connection failed ...")
@@ -46,6 +46,7 @@ app.get("/",(req,res,next) => {
 });
 
 app.use("/api",upload.none(), routes);
+
 app.use("*", (req, res) => {
     res.status(400).json({ error: "Invalid Request URL" });
   });
